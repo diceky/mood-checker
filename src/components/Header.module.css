@@ -1,0 +1,19 @@
+.wrapper {
+  padding: 20px;
+}
+
+.helpWrapper {
+  display: inline-block;
+  border: 2px solid #252b31;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+}
+
+.help {
+  color: #252b31;
+  font-size: 18px;
+}

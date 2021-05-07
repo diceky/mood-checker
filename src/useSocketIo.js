@@ -22,6 +22,10 @@ const useSocketIo = (roomId) => {
       setMessages(message);
     });
 
+    socketRef.current.on("new_handPos", (message) => {
+      setMessages(message);
+    });
+
     // Destroys the socket reference
     // when the connection is closed
     return () => {

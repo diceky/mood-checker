@@ -4,22 +4,24 @@ import * as handTrack from "handtrackjs";
 import useSocketIo from "../useSocketIo";
 import Button from "react-bootstrap/Button";
 
-const HandTrack = () => {
+const HandTrack = ({ roomId }) => {
   const [isTracking, setIsTracking] = useState(false);
   const cameraRef = useRef();
   const canvasRef = useRef();
+  const isTrackingRef = useRef(false);
+  const { messages, sendMessage } = useSocketIo(roomId);
 
   const defaultParams = {
     flipHorizontal: true,
     outputStride: 16,
     imageScaleFactor: 1,
-    maxNumBoxes: 20,
+    maxNumBoxes: 4,
     iouThreshold: 0.2,
     scoreThreshold: 0.6,
     modelType: "ssd320fpnlite",
-    modelSize: "medium",
+    modelSize: "small",
     bboxLineWidth: "2",
-    fontSize: 17,
+    fontSize: 16,
   };
 
   let video, canvas, context;
@@ -31,9 +33,11 @@ const HandTrack = () => {
 
     if (isTracking) {
       await handTrack.stopVideo(video);
+      isTrackingRef.current = false;
       setIsTracking(false);
     } else {
       await handTrack.startVideo(video);
+      isTrackingRef.current = true;
       setIsTracking(true);
       await runDetection();
     }
@@ -42,26 +46,44 @@ const HandTrack = () => {
   const runDetection = async () => {
     const model = await handTrack.load(defaultParams);
     const predictions = await model.detect(video);
+    await predictions.forEach((item) => {
+      if (item.label === "open") {
+        const handPos = {
+          x: item.bbox[0],
+          y: item.bbox[1],
+        };
+        console.log(handPos);
+        sendMessage("handPos", handPos);
+      }
+    });
     await model.renderPredictions(predictions, canvas, context, video);
-    await requestAnimationFrame(runDetection);
+    if (isTrackingRef.current) await requestAnimationFrame(runDetection);
+    else model.dispose();
   };
 
   return (
-    <div>
-      <video
-        ref={cameraRef}
-        width="400px"
-        height="300px"
-        className={Styles.video}
-      ></video>
-      <canvas
-        ref={canvasRef}
-        width="400px"
-        height="300px"
-        className={Styles.canvas}
-      ></canvas>
-      <Button onClick={handleClick}>
-        {isTracking ? "Stop camera" : "Start remote high five"}
+    <div className={Styles.wrapper}>
+      <div className={Styles.videoWrapper}>
+        <video
+          ref={cameraRef}
+          width="400px"
+          height="300px"
+          className={Styles.video}
+        ></video>
+        <canvas
+          ref={canvasRef}
+          width="400px"
+          height="300px"
+          className={Styles.canvas}
+        ></canvas>
+      </div>
+      <Button
+        onClick={handleClick}
+        className={Styles.button}
+        variant="dark"
+        size="lg"
+      >
+        {isTracking ? "Stop" : "Remote high five"}
       </Button>
     </div>
   );

@@ -21,10 +21,10 @@ const MoodSlider = ({ roomId }) => {
   console.log(JSON.stringify(messages));
 
   return (
-    <>
+    <div className={Styles.wrapper}>
       <p className={Styles.emoji}>{` ${emojiVal} `}</p>
       <RangeSlider value={sliderVal} onChange={handleSlider} variant="dark" />
-    </>
+    </div>
   );
 };
 

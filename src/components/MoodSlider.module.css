@@ -1,4 +1,9 @@
+.wrapper {
+  text-align: center;
+  padding: 50px 20px;
+}
+
 .emoji {
-  font-size: 64px;
+  font-size: 96px;
   font-weight: normal;
 }

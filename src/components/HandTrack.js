@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import Styles from "./HandTrack.module.css";
 import * as handTrack from "handtrackjs";
 import Button from "react-bootstrap/Button";
-import { Howl, Howler } from "howler";
+import { Howl } from "howler";
 import clapSound from "../sounds/highfive.mp3";
 
 const color = [

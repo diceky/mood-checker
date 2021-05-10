@@ -29,20 +29,20 @@ const Room = () => {
 
   const handleSubmit = () => {};
 
-  console.log(JSON.stringify(messages));
-
   return (
     <Layout>
       {id ? (
         <Row>
-          <Col md={{ span: 6, offset: 3 }}>
-            <h2>{`Room ID is ${id}`}</h2>
+          <h2>{`Room ID is ${id}`}</h2>
+          <Col md={{ span: 5, offset: 1 }}>
             <MoodSlider
               roomId={id}
               messages={messages}
               sendMessage={sendMessage}
               socketId={socketId}
             />
+          </Col>
+          <Col md={5}>
             <HandTrack
               roomId={id}
               messages={messages}

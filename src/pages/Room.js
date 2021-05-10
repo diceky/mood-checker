@@ -9,14 +9,15 @@ import Styles from "./Room.module.css";
 import { useParams, Link } from "react-router-dom";
 import MoodSlider from "../components/MoodSlider";
 import HandTrack from "../components/HandTrack";
+import useSocketIo from "../useSocketIo";
 
 const Room = () => {
   const { id } = useParams();
   const [roomId, setRoomId] = useState("");
   const [validated, setValidated] = useState(false);
+  const { messages, sendMessage, socketId } = useSocketIo(id);
 
   const handleRoomIdChange = (event) => {
-    console.log("handleRoomIdChange");
     const input = event.target.value;
     setRoomId(input);
     if (input.length === 6 && !isNaN(input)) {
@@ -26,9 +27,9 @@ const Room = () => {
     }
   };
 
-  const handleSubmit = () => {
-    console.log("handleSubmit");
-  };
+  const handleSubmit = () => {};
+
+  console.log(JSON.stringify(messages));
 
   return (
     <Layout>
@@ -36,8 +37,18 @@ const Room = () => {
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
             <h2>{`Room ID is ${id}`}</h2>
-            <MoodSlider roomId={id} />
-            <HandTrack roomId={id} />
+            <MoodSlider
+              roomId={id}
+              messages={messages}
+              sendMessage={sendMessage}
+              socketId={socketId}
+            />
+            <HandTrack
+              roomId={id}
+              messages={messages}
+              sendMessage={sendMessage}
+              socketId={socketId}
+            />
           </Col>
         </Row>
       ) : (

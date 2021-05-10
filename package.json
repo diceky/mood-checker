@@ -9,6 +9,7 @@
     "bootstrap": "^5.0.0",
     "chart.js": "^3.2.1",
     "handtrackjs": "^0.1.5",
+    "howler": "^2.2.1",
     "react": "^16.8.0",
     "react-bootstrap": "^1.5.2",
     "react-bootstrap-range-slider": "^2.0.2",

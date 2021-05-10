@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import Styles from "./MoodSlider.module.css";
-import useSocketIo from "../useSocketIo";
 import RangeSlider from "react-bootstrap-range-slider";
 
-const MoodSlider = ({ roomId }) => {
-  const { messages, sendMessage } = useSocketIo(roomId);
+const MoodSlider = ({ roomId, sendMessage }) => {
   const [sliderVal, setSliderVal] = useState(50);
   const [emojiVal, setEmojiVal] = useState("😐");
 
@@ -17,8 +15,6 @@ const MoodSlider = ({ roomId }) => {
     else if (sliderVal >= 60 && sliderVal < 80) setEmojiVal("🙂");
     else if (sliderVal >= 80 && sliderVal < 100) setEmojiVal("😆");
   };
-
-  console.log(JSON.stringify(messages));
 
   return (
     <div className={Styles.wrapper}>

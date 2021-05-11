@@ -49,6 +49,7 @@
 .receivedMessage {
   composes: message;
   background-color: #3f4042;
+  color: #f6fafb;
   margin-right: auto;
 }
 

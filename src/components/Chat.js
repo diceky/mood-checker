@@ -26,7 +26,7 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
   return (
     <div className={Styles.wrapper}>
       <p className={Styles.title}>Share your honest thoughts</p>
-      <p className={Styles.subtitle}>(Trust me, it's 100% anonymous)</p>
+      <p className={Styles.subtitle}>(We promise, it's 100% anonymous)</p>
       <Row className={Styles.chatWrapper}>
         <ol className={Styles.chatList}>
           {chats &&

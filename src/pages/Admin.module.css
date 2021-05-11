@@ -25,3 +25,39 @@
 .handWrapper {
   margin-bottom: 30px;
 }
+
+.chatWrapper {
+  margin-top: 20px;
+  margin-bottom: 30px;
+  background-color: #f6fafb;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 20px;
+  height: 500px;
+  overflow: auto;
+}
+
+.chatTitle {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.chatList {
+  list-style-type: none;
+  padding: 0;
+}
+
+.message {
+  padding: 5px 20px;
+  border-radius: 20px;
+  margin-bottom: 5px;
+  width: 40%;
+  word-break: break-word;
+}
+
+.receivedMessage {
+  composes: message;
+  background-color: #3f4042;
+  color: #f6fafb;
+  margin: 10px auto;
+}

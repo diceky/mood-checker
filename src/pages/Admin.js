@@ -11,7 +11,7 @@ import useSocketIo from "../useSocketIo";
 const Admin = () => {
   const { id } = useParams();
   const [isValid, setIsValid] = useState(false);
-  const { messages, socketId } = useSocketIo(id);
+  const { messages, chats, socketId } = useSocketIo(id);
 
   useEffect(() => {
     if (id.length === 6 && !isNaN(id)) {
@@ -52,6 +52,19 @@ const Admin = () => {
                 messages={messages}
                 socketId={socketId}
               />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={{ span: 10, offset: 1 }} className={Styles.chatWrapper}>
+              <h2 className={Styles.chatTitle}>Chat</h2>
+              <ol className={Styles.chatList}>
+                {chats &&
+                  chats.map((chat, i) => (
+                    <li key={i} className={Styles.receivedMessage}>
+                      {chat.body}
+                    </li>
+                  ))}
+              </ol>
             </Col>
           </Row>
         </Row>

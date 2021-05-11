@@ -12,4 +12,4 @@ Allows workshop participants to remotely high five each other using handtracking
 
 ### Anonymous chat
 
-Coming soon...
+Allows workshop participants to post 100% anonymous chats during the workshop.

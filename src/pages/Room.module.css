@@ -1,3 +1,12 @@
+.roomId p {
+  font-size: 14px;
+  font-weight: 600;
+  background-color: #d49c6b;
+  color: #f6fafb;
+  display: inline-block;
+  padding: 0 10px;
+}
+
 .button {
   width: 100%;
   margin-top: 40px;

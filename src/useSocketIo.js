@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import socketIOClient from "socket.io-client";
 
-const SOCKET_SERVER_URL = "http://127.0.0.1:4000";
+const SOCKET_SERVER_URL = "https://mood-checker-server.herokuapp.com/";
 
 const useSocketIo = (roomId) => {
   const [messages, setMessages] = useState(""); // Sent and received messages

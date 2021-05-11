@@ -137,6 +137,7 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
 
   return (
     <div className={Styles.wrapper}>
+      <p className={Styles.title}>High five?</p>
       <div className={Styles.videoWrapper}>
         <video ref={cameraRef} className={Styles.video}></video>
         <canvas ref={canvasRef} className={Styles.canvas}></canvas>
@@ -147,7 +148,7 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
         variant="dark"
         size="lg"
       >
-        {isTracking ? "Stop" : "Remote high five!"}
+        {isTracking ? "Stop" : "Start"}
       </Button>
     </div>
   );

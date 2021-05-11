@@ -1,10 +1,15 @@
 .wrapper {
-  margin-top: 50px;
+  margin-top: 20px;
+  background-color: #f6fafb;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 20px;
 }
 
 .title {
 }
 
 .canvas {
-  width: 100%;
+  width: 80%;
+  margin: 20px auto;
 }

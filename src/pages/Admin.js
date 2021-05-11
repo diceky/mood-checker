@@ -22,15 +22,32 @@ const Admin = () => {
   console.log(messages);
 
   return (
-    <Layout>
+    <Layout showBack={false} admin>
       {isValid ? (
-        <Row>
+        <Row className={Styles.wrapper}>
           <Row>
+            <Col md={{ span: 10, offset: 1 }} className={Styles.titleWrapper}>
+              <p className={Styles.title}>Admin Dashboard</p>
+              <Row>
+                <Col md={6}>
+                  <p className={Styles.info}>{`Room ID:${id}`}</p>
+                </Col>
+                <Col md={6}>
+                  <p className={Styles.info}>
+                    {`Participants: ${
+                      messages ? messages.clients.length - 1 : 0
+                    }`}
+                  </p>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+          <Row className={Styles.chartWrapper}>
             <Col md={{ span: 10, offset: 1 }}>
               <BarChart roomId={id} messages={messages} socketId={socketId} />
             </Col>
           </Row>
-          <Row>
+          <Row className={Styles.handWrapper}>
             <Col md={{ span: 10, offset: 1 }}>
               <HandPosition
                 roomId={id}
@@ -41,7 +58,7 @@ const Admin = () => {
           </Row>
         </Row>
       ) : (
-        <Row>
+        <Row className={Styles.wrapper}>
           <Col md={{ span: 8, offset: 2 }}>
             <h2>Invalid Room ID</h2>
           </Col>

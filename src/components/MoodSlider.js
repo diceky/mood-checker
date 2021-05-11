@@ -18,8 +18,19 @@ const MoodSlider = ({ roomId, sendMessage }) => {
 
   return (
     <div className={Styles.wrapper}>
+      <p className={Styles.title}>How are you feeling?</p>
       <p className={Styles.emoji}>{` ${emojiVal} `}</p>
-      <RangeSlider value={sliderVal} onChange={handleSlider} variant="dark" />
+      <div className={Styles.sliderWrapper}>
+        <span className={Styles.labelLeft}>Awesome!</span>
+        <span className={Styles.labelRight}>Very low</span>
+        <RangeSlider
+          value={sliderVal}
+          onChange={handleSlider}
+          variant="dark"
+          className={Styles.slider}
+          tooltipStyle={{ marginTop: "30px" }}
+        />
+      </div>
     </div>
   );
 };

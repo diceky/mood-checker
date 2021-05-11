@@ -30,10 +30,12 @@ const Room = () => {
   const handleSubmit = () => {};
 
   return (
-    <Layout>
+    <Layout showBack={false}>
       {id ? (
         <Row>
-          <h2>{`Room ID is ${id}`}</h2>
+          <div className={Styles.roomId}>
+            <p>{`Room ID:${id}`}</p>
+          </div>
           <Col md={{ span: 5, offset: 1 }}>
             <MoodSlider
               roomId={id}

@@ -64,8 +64,23 @@
   align-items: center;
 }
 
+.linkWrapper:hover {
+  background-color: #d49c6b;
+  border: 2px solid #252b31;
+  color: #f6fafb;
+}
+
+.linkWrapper:hover .linkIcon {
+  stroke-width: 3px;
+}
+
+.linkWrapper:hover .line {
+  border-color: #252b31;
+}
+
 .linkIcon {
   margin-right: 20px;
+  cursor: pointer;
 }
 
 .line {
@@ -79,4 +94,11 @@
 .link {
   margin: 5px 15px;
   font-weight: 500;
+  text-decoration: none;
+  color: #252b31;
+}
+
+.link:hover {
+  color: #252b31;
+  text-decoration: underline 2px solid;
 }

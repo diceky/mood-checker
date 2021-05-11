@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../components/Layout";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -6,17 +6,37 @@ import Button from "react-bootstrap/Button";
 import Styles from "./Home.module.css";
 import { Plus, LogIn, Copy } from "react-feather";
 import { Link } from "react-router-dom";
+import Tooltip from "react-bootstrap/Tooltip";
+import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 
 const Home = () => {
   const [roomId, setRoomId] = useState(null);
+  const [isCopied, setIsCopied] = useState(false);
+  const copyRoomRef = useRef(null);
+  const copyAdminRef = useRef(null);
 
   const handleCreateRoom = () => {
     const randomSixDigit = Math.floor(Math.random() * 899999 + 100000);
     setRoomId(randomSixDigit);
   };
 
+  const handleCopy = (ref) => {
+    navigator.clipboard.writeText(ref.current.childNodes[0].data);
+    setIsCopied(true);
+  };
+
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      {isCopied ? "Copied to clipboard!" : "Copy link"}
+    </Tooltip>
+  );
+
+  const onBack = () => {
+    setRoomId(null);
+  };
+
   return (
-    <Layout>
+    <Layout showBack={roomId ? true : false} onBack={onBack}>
       {!roomId && (
         <>
           <Row>
@@ -76,11 +96,28 @@ const Home = () => {
               </span>
             </Col>
             <Col md={4} className={Styles.linkWrapper}>
-              <Copy size={24} color="#252b31" className={Styles.linkIcon} />
+              <OverlayTrigger
+                placement="top"
+                delay={{ show: 100, hide: 100 }}
+                overlay={renderTooltip}
+              >
+                <Copy
+                  size={24}
+                  color="#252b31"
+                  className={Styles.linkIcon}
+                  onClick={() => handleCopy(copyRoomRef)}
+                />
+              </OverlayTrigger>
               <span className={Styles.line}></span>
-              <span
+              <a
+                href={`https://moodchecker.app/room/${roomId}`}
+                target="_blank"
+                rel="noreferrer"
+                ref={copyRoomRef}
                 className={Styles.link}
-              >{`https://moodchecker.com/room/${roomId}`}</span>
+              >
+                {`https://moodchecker.app/room/${roomId}`}
+              </a>
             </Col>
           </Row>
           <Row className={Styles.shareWrapper}>
@@ -95,11 +132,26 @@ const Home = () => {
               </span>
             </Col>
             <Col md={4} className={Styles.linkWrapper}>
-              <Copy size={24} color="#252b31" className={Styles.linkIcon} />
+              <OverlayTrigger
+                placement="top"
+                delay={{ show: 100, hide: 100 }}
+                overlay={renderTooltip}
+              >
+                <Copy
+                  size={24}
+                  color="#252b31"
+                  className={Styles.linkIcon}
+                  onClick={() => handleCopy(copyAdminRef)}
+                />
+              </OverlayTrigger>
               <span className={Styles.line}></span>
-              <span
+              <a
+                href={`https://moodchecker.app/admin/${roomId}`}
+                target="_blank"
+                rel="noreferrer"
+                ref={copyAdminRef}
                 className={Styles.link}
-              >{`https://moodchecker.com/admin/${roomId}`}</span>
+              >{`https://moodchecker.app/admin/${roomId}`}</a>
             </Col>
           </Row>
         </>

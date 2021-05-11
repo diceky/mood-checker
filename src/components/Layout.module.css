@@ -1,7 +1,8 @@
 .wrapper {
   height: 100%;
-  position: relative;
   min-height: 100vh;
+  position: relative;
   background-color: #f6fafb;
   color: #252b31;
+  padding-bottom: 60px;
 }

@@ -1,5 +1,15 @@
+.wrapper {
+  background-color: #f6fafb;
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 20px;
+}
+
 .title {
 }
 
 .average {
+}
+
+.chart {
 }

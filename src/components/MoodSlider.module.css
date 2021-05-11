@@ -1,9 +1,37 @@
 .wrapper {
   text-align: center;
-  padding: 50px 20px;
+  padding: 50px 10px;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 40px;
 }
 
 .emoji {
   font-size: 96px;
   font-weight: normal;
+}
+
+.sliderWrapper {
+  position: relative;
+}
+
+.labelLeft {
+  position: absolute;
+  right: 0;
+}
+
+.labelRight {
+  position: absolute;
+  left: 0;
+}
+
+.slider {
+  position: absolute;
+  top: 30px;
+}
+
+.tooltip {
 }

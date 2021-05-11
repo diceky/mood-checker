@@ -2,6 +2,11 @@
   padding: 20px;
 }
 
+.adminWrapper {
+  composes: wrapper;
+  background-color: #c1c8c7;
+}
+
 .helpWrapper {
   display: inline-block;
   border: 2px solid #252b31;
@@ -16,4 +21,8 @@
 .help {
   color: #252b31;
   font-size: 18px;
+}
+
+.icon {
+  cursor: pointer;
 }

@@ -1,0 +1,26 @@
+.wrapper {
+  background-color: #c1c8c7;
+}
+
+.titleWrapper {
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 20px;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 48px;
+}
+
+.info {
+  font-size: 24px;
+}
+
+.chartWrapper {
+  margin-bottom: 50px;
+}
+
+.handWrapper {
+  margin-bottom: 50px;
+}

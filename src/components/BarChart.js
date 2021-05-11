@@ -3,6 +3,7 @@ import Styles from "./BarChart.module.css";
 import { Bar, defaults } from "react-chartjs-2";
 
 const options = {
+  maintainAspectRatio: true,
   scales: {
     y: {
       min: 0,
@@ -68,7 +69,7 @@ const BarChart = ({ messages, socketId }) => {
 
       setBarData(newData);
     }
-  }, [messages]);
+  }, [messages, barData, socketId]);
 
   return (
     <div className={Styles.wrapper}>
@@ -76,7 +77,12 @@ const BarChart = ({ messages, socketId }) => {
       <p className={Styles.average}>{`Average Mood:${parseInt(
         average(barData.datasets[0].data)
       )}`}</p>
-      <Bar data={barData} options={options} />
+      <Bar
+        data={barData}
+        options={options}
+        className={Styles.chart}
+        height={80}
+      />
     </div>
   );
 };

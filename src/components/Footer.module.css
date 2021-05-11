@@ -6,4 +6,23 @@
   bottom: 0;
   text-align: center;
   background-color: #f6fafb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+}
+
+.adminWrapper {
+  composes: wrapper;
+  background-color: #c1c8c7;
+}
+
+.link {
+  margin-left: 5px;
+  text-decoration: underline 1px;
+  color: #252b31;
+}
+
+.link:hover {
+  color: #d49c6b;
 }

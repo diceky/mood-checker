@@ -7,7 +7,7 @@ import Help from "./Help";
 import { CSSTransition } from "react-transition-group";
 import fadeTransition from "./fade.module.css";
 
-const Layout = ({ children, showBack, admin, onBack }) => {
+const Layout = ({ children, showBack, admin, onBack, showHome }) => {
   const [showHelp, setShowHelp] = useState(false);
 
   const handleHelp = () => {
@@ -22,6 +22,7 @@ const Layout = ({ children, showBack, admin, onBack }) => {
         onBack={onBack}
         onHelp={handleHelp}
         showHelp={showHelp}
+        showHome={showHome}
       />
       <CSSTransition
         in={showHelp}

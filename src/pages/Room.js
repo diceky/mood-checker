@@ -39,13 +39,10 @@ const Room = () => {
   const handleSubmit = () => {};
 
   return (
-    <Layout showBack={false}>
+    <Layout showBack={false} showHome>
       {id && isValid && (
         <>
           <Row>
-            <div className={Styles.roomId}>
-              <p>{`Room ID:${id}`}</p>
-            </div>
             <Col md={6} lg={{ span: 5, offset: 1 }}>
               <MoodSlider
                 roomId={id}

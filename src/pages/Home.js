@@ -36,7 +36,7 @@ const Home = () => {
   };
 
   return (
-    <Layout showBack={roomId ? true : false} onBack={onBack}>
+    <Layout showBack={roomId ? true : false} onBack={onBack} showHome={false}>
       {!roomId && (
         <>
           <Row>

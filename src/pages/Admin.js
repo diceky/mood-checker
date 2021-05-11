@@ -20,7 +20,7 @@ const Admin = () => {
   }, [id]);
 
   return (
-    <Layout showBack={false} admin>
+    <Layout showBack={false} admin showHome>
       {isValid ? (
         <Row className={Styles.wrapper}>
           <Row>

@@ -11,7 +11,7 @@
 
 .canvas {
   width: 100%;
-  background-color: #c1c8c7;
+  border: 2px solid #c1c8c7;
 }
 
 .video {

@@ -1,10 +1,16 @@
 .wrapper {
   padding: 20px;
+  transition: background-color 500ms ease-in-out;
 }
 
-.adminWrapper {
+.wrapperGrey {
   composes: wrapper;
   background-color: #c1c8c7;
+}
+
+.wrapperBlue {
+  composes: wrapper;
+  background-color: #252b31;
 }
 
 .helpWrapper {
@@ -16,6 +22,15 @@
   width: 30px;
   height: 30px;
   text-align: center;
+  cursor: pointer;
+}
+
+.helpWrapper:hover {
+  background-color: #252b31;
+}
+
+.helpWrapper:hover .help {
+  color: #f6fafb;
 }
 
 .help {
@@ -25,4 +40,14 @@
 
 .icon {
   cursor: pointer;
+}
+
+.close {
+  cursor: pointer;
+  stroke: #f6fafb;
+}
+
+.close:hover {
+  fill: #f6fafb;
+  stroke: #252b31;
 }

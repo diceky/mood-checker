@@ -17,7 +17,6 @@ const useSocketIo = (roomId) => {
 
       socketRef.current.on("connect", () => {
         setSocketId(socketRef.current.id);
-        console.log(`Connected:${socketRef.current.id}`);
       });
 
       // Listens for incoming messages

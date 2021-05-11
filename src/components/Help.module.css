@@ -1,0 +1,49 @@
+.wrapper {
+  background-color: #252b31;
+  color: #f6fafb;
+  height: 100vh;
+  padding: 10%;
+  position: absolute;
+  z-index: 20;
+}
+
+.title {
+  font-size: 64px;
+  margin-bottom: 100px;
+  line-height: 150%;
+}
+
+.highlight {
+  background-color: #d49c6b;
+  font-weight: 600;
+  text-decoration: underline 4px;
+}
+
+.orange {
+  color: #d49c6b;
+}
+
+.content {
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 180%;
+}
+
+.line {
+  border-bottom: 1px solid #f6fafb;
+  margin: 20px auto;
+}
+
+.note {
+  font-size: 12px;
+}
+
+.link {
+  margin-left: 3px;
+  text-decoration: underline 1px;
+  color: #f6fafb;
+}
+
+.link:hover {
+  color: #d49c6b;
+}

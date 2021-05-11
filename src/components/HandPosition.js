@@ -24,8 +24,8 @@ const HandPosition = ({ messages, socketId }) => {
 
   useEffect(() => {
     contextRef.current = canvasRef.current.getContext("2d");
-    canvasRef.current.width *= 2;
-    canvasRef.current.height *= 2;
+    canvasRef.current.width = 640;
+    canvasRef.current.height = 480;
   }, []);
 
   if (messages && messages.content.body.x) {

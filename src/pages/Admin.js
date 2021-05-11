@@ -19,8 +19,6 @@ const Admin = () => {
     }
   }, [id]);
 
-  console.log(messages);
-
   return (
     <Layout showBack={false} admin>
       {isValid ? (

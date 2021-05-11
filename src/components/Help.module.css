@@ -1,7 +1,9 @@
 .wrapper {
   background-color: #252b31;
   color: #f6fafb;
-  height: 100vh;
+  min-height: 100vh;
+  height: 100%;
+  width: 100vw;
   padding: 10%;
   position: absolute;
   z-index: 20;
@@ -46,4 +48,19 @@
 
 .link:hover {
   color: #d49c6b;
+}
+
+/**************
+Responsive
+**************/
+@media screen and (max-width: 480px) {
+  /*　Smartphone portrait */
+  .title {
+    font-size: 24px;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 896px) {
+  /*　for iPad portrait and Smartphone landscape 　*/
 }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Layout from "../components/Layout";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,13 +9,15 @@ import Styles from "./Room.module.css";
 import { useParams, Link } from "react-router-dom";
 import MoodSlider from "../components/MoodSlider";
 import HandTrack from "../components/HandTrack";
+import Chat from "../components/Chat";
 import useSocketIo from "../useSocketIo";
 
 const Room = () => {
   const { id } = useParams();
+  const formRef = useRef(null);
   const [roomId, setRoomId] = useState("");
   const [validated, setValidated] = useState(false);
-  const { messages, sendMessage, socketId } = useSocketIo(id);
+  const { messages, chats, sendMessage, socketId } = useSocketIo(id);
 
   const handleRoomIdChange = (event) => {
     const input = event.target.value;
@@ -32,27 +34,39 @@ const Room = () => {
   return (
     <Layout showBack={false}>
       {id ? (
-        <Row>
-          <div className={Styles.roomId}>
-            <p>{`Room ID:${id}`}</p>
-          </div>
-          <Col md={{ span: 5, offset: 1 }}>
-            <MoodSlider
-              roomId={id}
-              messages={messages}
-              sendMessage={sendMessage}
-              socketId={socketId}
-            />
-          </Col>
-          <Col md={5}>
-            <HandTrack
-              roomId={id}
-              messages={messages}
-              sendMessage={sendMessage}
-              socketId={socketId}
-            />
-          </Col>
-        </Row>
+        <>
+          <Row>
+            <div className={Styles.roomId}>
+              <p>{`Room ID:${id}`}</p>
+            </div>
+            <Col md={6} lg={{ span: 5, offset: 1 }}>
+              <MoodSlider
+                roomId={id}
+                messages={messages}
+                sendMessage={sendMessage}
+                socketId={socketId}
+              />
+            </Col>
+            <Col md={6} lg={5}>
+              <HandTrack
+                roomId={id}
+                messages={messages}
+                sendMessage={sendMessage}
+                socketId={socketId}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col md={12} lg={{ span: 10, offset: 1 }}>
+              <Chat
+                roomId={id}
+                chats={chats}
+                sendMessage={sendMessage}
+                socketId={socketId}
+              />
+            </Col>
+          </Row>
+        </>
       ) : (
         <Row>
           <Col md={{ span: 8, offset: 2 }}>
@@ -63,6 +77,7 @@ const Room = () => {
                 value={roomId}
                 onChange={handleRoomIdChange}
                 isInvalid={!validated}
+                ref={formRef}
                 style={{
                   border: 0,
                   outline: 0,

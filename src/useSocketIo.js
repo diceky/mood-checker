@@ -5,6 +5,7 @@ const SOCKET_SERVER_URL = "https://mood-checker-server.herokuapp.com/";
 
 const useSocketIo = (roomId) => {
   const [messages, setMessages] = useState(""); // Sent and received messages
+  const [chats, setChats] = useState(""); // Sent and received messages
   const [socketId, setSocketId] = useState(""); // Sent and received messages
   const socketRef = useRef();
 
@@ -28,6 +29,14 @@ const useSocketIo = (roomId) => {
         setMessages(message);
       });
 
+      socketRef.current.on("chat_message", (message) => {
+        const incomingMessage = {
+          ...message,
+          ownedByCurrentUser: message.senderId === socketRef.current.id,
+        };
+        setChats((chats) => [...chats, incomingMessage]);
+      });
+
       // Destroys the socket reference
       // when the connection is closed
       return () => {
@@ -46,7 +55,7 @@ const useSocketIo = (roomId) => {
     });
   };
 
-  return { messages, sendMessage, socketId };
+  return { messages, chats, sendMessage, socketId };
 };
 
 export default useSocketIo;

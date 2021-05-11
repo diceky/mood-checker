@@ -1,5 +1,6 @@
 .wrapper {
   background-color: #c1c8c7;
+  min-height: calc(100vh - 60px - 70px);
 }
 
 .titleWrapper {

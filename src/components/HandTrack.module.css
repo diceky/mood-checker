@@ -1,6 +1,7 @@
 .wrapper {
+  height: 100%;
   text-align: center;
-  padding: 50px 10px;
+  padding: 50px 20px;
 }
 
 .title {
@@ -10,7 +11,7 @@
 }
 
 .canvas {
-  width: 100%;
+  width: 70%;
   border: 2px solid #c1c8c7;
 }
 
@@ -20,4 +21,18 @@
 }
 
 .button {
+}
+
+/**************
+Responsive
+**************/
+@media screen and (max-width: 480px) {
+  /*　Smartphone portrait */
+  .canvas {
+    width: 90%;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 896px) {
+  /*　for iPad portrait and Smartphone landscape 　*/
 }

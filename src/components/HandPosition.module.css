@@ -14,4 +14,5 @@
 .canvas {
   width: 50%;
   margin: 20px auto;
+  border: 2px solid #c1c8c7;
 }

@@ -85,17 +85,28 @@ const Home = () => {
             </Col>
           </Row>
           <Row className={Styles.shareWrapper}>
-            <Col md={{ span: 1, offset: 2 }}>
+            <Col
+              xs={{ span: 2, offset: 0 }}
+              sm={{ span: 1, offset: 2 }}
+              md={{ span: 1, offset: 2 }}
+              lg={{ span: 1, offset: 2 }}
+            >
               <div className={Styles.linkIndexWrapper}>
                 <span className={Styles.linkIndex}>1</span>
               </div>
             </Col>
-            <Col md={3}>
+            <Col xs={10} sm={8} md={3} lg={3}>
               <span className={Styles.linkDescription}>
                 Share this link with your workshop participants
               </span>
             </Col>
-            <Col md={4} className={Styles.linkWrapper}>
+            <Col
+              xs={{ span: 10, offset: 1 }}
+              sm={{ span: 8, offset: 2 }}
+              md={{ span: 5, offset: 0 }}
+              lg={{ span: 5, offset: 0 }}
+              className={Styles.linkWrapper}
+            >
               <OverlayTrigger
                 placement="top"
                 delay={{ show: 100, hide: 100 }}
@@ -121,17 +132,28 @@ const Home = () => {
             </Col>
           </Row>
           <Row className={Styles.shareWrapper}>
-            <Col md={{ span: 1, offset: 2 }}>
+            <Col
+              xs={{ span: 2, offset: 0 }}
+              sm={{ span: 1, offset: 2 }}
+              md={{ span: 1, offset: 2 }}
+              lg={{ span: 1, offset: 2 }}
+            >
               <div className={Styles.linkIndexWrapper}>
                 <span className={Styles.linkIndex}>2</span>
               </div>
             </Col>
-            <Col md={3}>
+            <Col xs={10} sm={8} md={3}>
               <span className={Styles.linkDescription}>
                 This is the facilitator page, just for you.
               </span>
             </Col>
-            <Col md={4} className={Styles.linkWrapper}>
+            <Col
+              xs={{ span: 10, offset: 1 }}
+              sm={{ span: 8, offset: 2 }}
+              md={{ span: 5, offset: 0 }}
+              lg={{ span: 5, offset: 0 }}
+              className={Styles.linkWrapper}
+            >
               <OverlayTrigger
                 placement="top"
                 delay={{ show: 100, hide: 100 }}

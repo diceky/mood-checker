@@ -30,3 +30,17 @@
   color: #c1c8c7;
   opacity: 1; /* Firefox */
 }
+
+/**************
+Responsive
+**************/
+@media screen and (max-width: 480px) {
+  /*　Smartphone portrait */
+  .inputField {
+    margin-top: 150px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 896px) {
+  /*　for iPad portrait and Smartphone landscape 　*/
+}

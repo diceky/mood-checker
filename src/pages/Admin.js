@@ -58,7 +58,8 @@ const Admin = () => {
       ) : (
         <Row className={Styles.wrapper}>
           <Col md={{ span: 8, offset: 2 }}>
-            <h2>Invalid Room ID</h2>
+            <h2>Room ID is invalid</h2>
+            <p>Room ID is a 6 digit number</p>
           </Col>
         </Row>
       )}

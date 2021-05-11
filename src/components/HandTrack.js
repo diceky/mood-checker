@@ -140,7 +140,7 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
 
   return (
     <div className={Styles.wrapper}>
-      <p className={Styles.title}>High five?</p>
+      <p className={Styles.title}>Care for a high five?</p>
       <div className={Styles.videoWrapper}>
         <video ref={cameraRef} className={Styles.video}></video>
         <canvas ref={canvasRef} className={Styles.canvas}></canvas>

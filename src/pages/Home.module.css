@@ -57,7 +57,6 @@
 }
 
 .linkWrapper {
-  display: inline-block;
   border: 2px solid #252b31;
   display: flex;
   flex-direction: row;
@@ -88,9 +87,6 @@
   border-right: 2px solid #252b31;
 }
 
-.linkIcon::after {
-}
-
 .link {
   margin: 5px 15px;
   font-weight: 500;
@@ -101,4 +97,40 @@
 .link:hover {
   color: #252b31;
   text-decoration: underline 2px solid;
+}
+
+/**************
+Responsive
+**************/
+@media screen and (max-width: 480px) {
+  /*　Smartphone portrait */
+  .title {
+    font-size: 48px;
+    margin: 60px auto 40px;
+  }
+
+  .linkDescription {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .linkWrapper {
+    margin-top: 20px !important ;
+  }
+
+  .linkIcon {
+    display: none;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .link {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 480px) and (max-width: 896px) {
+  /*　for iPad portrait and Smartphone landscape 　*/
 }

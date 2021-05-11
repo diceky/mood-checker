@@ -6,10 +6,10 @@ import { ArrowLeft, XCircle } from "react-feather";
 
 const Header = ({ showBack, admin, onBack, onHelp, showHelp }) => {
   let wrapperClass = "";
-  if (admin) {
-    wrapperClass = Styles["wrapperGrey"];
-  } else if (showHelp) {
+  if (showHelp) {
     wrapperClass = Styles["wrapperBlue"];
+  } else if (admin) {
+    wrapperClass = Styles["wrapperGrey"];
   } else {
     wrapperClass = Styles["wrapper"];
   }
@@ -17,7 +17,7 @@ const Header = ({ showBack, admin, onBack, onHelp, showHelp }) => {
   return (
     <Row className={wrapperClass}>
       {showBack && (
-        <Col md={1} style={{ textAlign: "left" }}>
+        <Col xs={2} sm={2} md={1} style={{ textAlign: "left" }}>
           <ArrowLeft
             size={24}
             color="#252b31"
@@ -27,6 +27,8 @@ const Header = ({ showBack, admin, onBack, onHelp, showHelp }) => {
         </Col>
       )}
       <Col
+        xs={showBack ? { span: 2, offset: 8 } : { span: 2, offset: 10 }}
+        sm={showBack ? { span: 2, offset: 8 } : { span: 2, offset: 10 }}
         md={showBack ? { span: 1, offset: 10 } : { span: 1, offset: 11 }}
         style={{ textAlign: "right" }}
       >

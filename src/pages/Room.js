@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import Layout from "../components/Layout";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -17,7 +17,14 @@ const Room = () => {
   const formRef = useRef(null);
   const [roomId, setRoomId] = useState("");
   const [validated, setValidated] = useState(false);
+  const [isValid, setIsValid] = useState(false);
   const { messages, chats, sendMessage, socketId } = useSocketIo(id);
+
+  useEffect(() => {
+    if (id && id.length === 6 && !isNaN(id)) {
+      setIsValid(true);
+    }
+  }, [id]);
 
   const handleRoomIdChange = (event) => {
     const input = event.target.value;
@@ -33,7 +40,7 @@ const Room = () => {
 
   return (
     <Layout showBack={false}>
-      {id ? (
+      {id && isValid && (
         <>
           <Row>
             <div className={Styles.roomId}>
@@ -67,7 +74,16 @@ const Room = () => {
             </Col>
           </Row>
         </>
-      ) : (
+      )}
+      {id && !isValid && (
+        <Row>
+          <Col md={{ span: 8, offset: 2 }}>
+            <h2>Room ID is invalid</h2>
+            <p>Room ID is a 6 digit number</p>
+          </Col>
+        </Row>
+      )}
+      {!id && (
         <Row>
           <Col md={{ span: 8, offset: 2 }}>
             <InputGroup hasValidation>

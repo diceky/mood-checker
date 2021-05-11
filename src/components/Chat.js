@@ -5,7 +5,7 @@ import Styles from "./Chat.module.css";
 import Button from "react-bootstrap/Button";
 
 const Chat = ({ roomId, chats, sendMessage, socketId }) => {
-  const [newMessage, setNewMessage] = React.useState("");
+  const [newMessage, setNewMessage] = useState("");
 
   const handleNewMessage = (event) => {
     setNewMessage(event.target.value);

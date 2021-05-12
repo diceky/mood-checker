@@ -57,7 +57,7 @@ const BarChart = ({ messages, socketId }) => {
   const average = (arr) => arr.reduce((p, c) => p + c, 0) / arr.length;
 
   useEffect(() => {
-    if (messages) {
+    if (messages && !messages.content.body.x) {
       // remove admin socketId from clients array
       const clients = messages.clients.filter((item) => item !== socketId);
       const index = clients.indexOf(messages.content.senderId);

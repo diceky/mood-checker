@@ -64,8 +64,6 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
     canvas = canvasRef.current;
     contextRef.current = canvas.getContext("2d");
 
-    console.log(`canvans height:${canvas.height} width:${canvas.width}`);
-
     if (isTracking) {
       await handTrack.stopVideo(video);
       isTrackingRef.current = false;
@@ -98,8 +96,10 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
       contextRef.current,
       video
     );
-    if (isTrackingRef.current) await requestAnimationFrame(runDetection);
-    else model.dispose();
+    if (isTrackingRef.current) {
+      await model.dispose();
+      await requestAnimationFrame(runDetection);
+    } else model.dispose();
   };
 
   let handPos = [];

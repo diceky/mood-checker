@@ -6,7 +6,8 @@ import Button from "react-bootstrap/Button";
 
 const Chat = ({ roomId, chats, sendMessage, socketId }) => {
   const [newMessage, setNewMessage] = useState("");
-  const newestMessage = useRef(null);
+  const chatWrapperRef = useRef(null);
+  const chatListRef = useRef(null);
 
   const handleNewMessage = (event) => {
     setNewMessage(event.target.value);
@@ -25,8 +26,8 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
   };
 
   useEffect(() => {
-    if (newestMessage.current) {
-      newestMessage.current.scrollIntoView({ behavior: "smooth" });
+    if (chatListRef.current && chatWrapperRef.current) {
+      chatWrapperRef.current.scrollTop = chatListRef.current.offsetHeight;
     }
   }, [chats]);
 
@@ -34,8 +35,8 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
     <div className={Styles.wrapper}>
       <p className={Styles.title}>Share your honest thoughts</p>
       <p className={Styles.subtitle}>(We promise, it's 100% anonymous)</p>
-      <Row className={Styles.chatWrapper}>
-        <ol className={Styles.chatList}>
+      <Row className={Styles.chatWrapper} ref={chatWrapperRef}>
+        <ol className={Styles.chatList} ref={chatListRef}>
           {chats &&
             chats.map((chat, i) => (
               <li
@@ -49,7 +50,6 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
                 {chat.body}
               </li>
             ))}
-          <li ref={newestMessage}></li>
         </ol>
       </Row>
       <Row className={Styles.inputWrapper}>

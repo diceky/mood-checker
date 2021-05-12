@@ -11,7 +11,8 @@ import useSocketIo from "../useSocketIo";
 const Admin = () => {
   const { id } = useParams();
   const [isValid, setIsValid] = useState(false);
-  const newestMessage = useRef(null);
+  const chatWrapperRef = useRef(null);
+  const chatListRef = useRef(null);
   const { messages, chats, socketId } = useSocketIo(id);
 
   useEffect(() => {
@@ -21,8 +22,8 @@ const Admin = () => {
   }, [id]);
 
   useEffect(() => {
-    if (newestMessage.current) {
-      newestMessage.current.scrollIntoView({ behavior: "smooth" });
+    if (chatListRef.current && chatWrapperRef.current) {
+      chatWrapperRef.current.scrollTop = chatListRef.current.offsetHeight;
     }
   }, [chats]);
 
@@ -62,16 +63,19 @@ const Admin = () => {
             </Col>
           </Row>
           <Row>
-            <Col md={{ span: 10, offset: 1 }} className={Styles.chatWrapper}>
+            <Col
+              md={{ span: 10, offset: 1 }}
+              className={Styles.chatWrapper}
+              ref={chatWrapperRef}
+            >
               <h2 className={Styles.chatTitle}>Chat</h2>
-              <ol className={Styles.chatList}>
+              <ol className={Styles.chatList} ref={chatListRef}>
                 {chats &&
                   chats.map((chat, i) => (
                     <li key={i} className={Styles.receivedMessage}>
                       {chat.body}
                     </li>
                   ))}
-                <li ref={newestMessage}></li>
               </ol>
             </Col>
           </Row>

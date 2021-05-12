@@ -14,8 +14,10 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
   };
 
   const handleSendMessage = () => {
-    sendMessage("chat_message", newMessage);
-    setNewMessage("");
+    if (newMessage != "") {
+      sendMessage("chat_message", newMessage);
+      setNewMessage("");
+    }
   };
 
   const onKeyDown = (event) => {

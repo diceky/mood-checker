@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Styles from "./HandTrack.module.css";
 import * as handTrack from "handtrackjs";
 import Button from "react-bootstrap/Button";
@@ -101,6 +101,15 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
       await requestAnimationFrame(runDetection);
     } else model.dispose();
   };
+
+  useEffect(() => {
+    return () => {
+      //on unmount
+      handTrack.stopVideo(video);
+      isTrackingRef.current = false;
+      setIsTracking(false);
+    };
+  }, []);
 
   let handPos = [];
 

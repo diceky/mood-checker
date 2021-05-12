@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Styles from "./Room.module.css";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import MoodSlider from "../components/MoodSlider";
 import HandTrack from "../components/HandTrack";
 import Chat from "../components/Chat";
@@ -19,6 +19,7 @@ const Room = () => {
   const [validated, setValidated] = useState(false);
   const [isValid, setIsValid] = useState(false);
   const { messages, chats, sendMessage, socketId } = useSocketIo(id);
+  const history = useHistory();
 
   useEffect(() => {
     if (id && id.length === 6 && !isNaN(id)) {
@@ -36,7 +37,16 @@ const Room = () => {
     }
   };
 
-  const handleSubmit = () => {};
+  const handleSubmit = () => {
+    history.push(`/room/${roomId}`);
+  };
+
+  const onKeyDown = (event) => {
+    if (event.keyCode === 13 && validated) {
+      event.preventDefault();
+      handleSubmit();
+    }
+  };
 
   return (
     <Layout showBack={false} showHome>
@@ -100,6 +110,7 @@ const Room = () => {
                   borderBottom: "2px solid #252b31",
                 }}
                 className={Styles.inputField}
+                onKeyDown={onKeyDown}
               />
               <Form.Control.Feedback type="invalid">
                 Room ID must be a 6 digit number.
@@ -107,18 +118,16 @@ const Room = () => {
             </InputGroup>
           </Col>
           <Col md={{ span: 4, offset: 4 }}>
-            <Link to={`/room/${roomId}`}>
-              <Button
-                variant="dark"
-                size="lg"
-                block
-                className={Styles.button}
-                disabled={!validated}
-                onClick={handleSubmit}
-              >
-                Go to room
-              </Button>
-            </Link>
+            <Button
+              variant="dark"
+              size="lg"
+              block
+              className={Styles.button}
+              disabled={!validated}
+              onClick={handleSubmit}
+            >
+              Go to room
+            </Button>
           </Col>
         </Row>
       )}

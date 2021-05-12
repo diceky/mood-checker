@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Layout from "../components/Layout";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -11,6 +11,7 @@ import useSocketIo from "../useSocketIo";
 const Admin = () => {
   const { id } = useParams();
   const [isValid, setIsValid] = useState(false);
+  const newestMessage = useRef(null);
   const { messages, chats, socketId } = useSocketIo(id);
 
   useEffect(() => {
@@ -18,6 +19,12 @@ const Admin = () => {
       setIsValid(true);
     }
   }, [id]);
+
+  useEffect(() => {
+    if (newestMessage.current) {
+      newestMessage.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [chats]);
 
   return (
     <Layout showBack={false} admin showHome>
@@ -64,6 +71,7 @@ const Admin = () => {
                       {chat.body}
                     </li>
                   ))}
+                <li ref={newestMessage}></li>
               </ol>
             </Col>
           </Row>

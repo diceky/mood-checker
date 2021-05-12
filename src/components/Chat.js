@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Styles from "./Chat.module.css";
@@ -6,6 +6,7 @@ import Button from "react-bootstrap/Button";
 
 const Chat = ({ roomId, chats, sendMessage, socketId }) => {
   const [newMessage, setNewMessage] = useState("");
+  const newestMessage = useRef(null);
 
   const handleNewMessage = (event) => {
     setNewMessage(event.target.value);
@@ -22,6 +23,12 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
       handleSendMessage();
     }
   };
+
+  useEffect(() => {
+    if (newestMessage.current) {
+      newestMessage.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [chats]);
 
   return (
     <div className={Styles.wrapper}>
@@ -42,6 +49,7 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
                 {chat.body}
               </li>
             ))}
+          <li ref={newestMessage}></li>
         </ol>
       </Row>
       <Row className={Styles.inputWrapper}>

@@ -44,8 +44,6 @@ const HandPosition = ({ messages, socketId }) => {
       y: messages.content.body.y + messages.content.body.height / 3,
     };
 
-    console.log(`handPos:${JSON.stringify(handPos[index])}`);
-
     contextRef.current.beginPath();
     contextRef.current.arc(
       handPos[index].x,

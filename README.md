@@ -1,8 +1,8 @@
 # Mood checker
 
-![alt text](screenshots/screenshot2.png "User dashboard")
+**Check out the app at [https://moodchecker.app/](https://moodchecker.app/)**
 
-[https://moodchecker.app/](https://moodchecker.app/)
+![alt text](screenshots/screenshot2.png "User dashboard")
 
 Created with React, [Bootstrap](https://react-bootstrap.github.io/), [Feather icons](https://feathericons.com/), [Socket IO](https://socket.io/), [HandTrack.js](https://github.com/victordibia/handtrack.js/) and [Chart.js](https://github.com/reactchartjs/react-chartjs-2)
 

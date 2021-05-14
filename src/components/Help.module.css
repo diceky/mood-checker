@@ -1,11 +1,13 @@
 .wrapper {
   color: #f6fafb;
   min-height: 100vh;
+  height: 100%;
   width: 100vw;
   padding: 10%;
   position: absolute;
   z-index: 20;
   background-color: #252b31;
+  overflow-y: scroll;
 }
 
 .title {

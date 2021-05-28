@@ -44,16 +44,14 @@ const HandPosition = ({ messages, socketId }) => {
       y: messages.content.body.y + messages.content.body.height / 3,
     };
 
-    contextRef.current.beginPath();
-    contextRef.current.arc(
-      handPos[index].x,
-      handPos[index].y,
-      10,
-      0,
-      2 * Math.PI
-    );
-    contextRef.current.fillStyle = color[index % color.length];
-    contextRef.current.fill();
+    for (let i = 0; i < handPos.length; i++) {
+      if (handPos[i]) {
+        contextRef.current.beginPath();
+        contextRef.current.arc(handPos[i].x, handPos[i].y, 10, 0, 2 * Math.PI);
+        contextRef.current.fillStyle = color[i % color.length];
+        contextRef.current.fill();
+      }
+    }
   }
 
   return (

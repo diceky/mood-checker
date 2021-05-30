@@ -2,6 +2,7 @@ import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Styles from "./Help.module.css";
+import logo from "../images/github.png";
 
 const Help = () => {
   return (
@@ -28,17 +29,26 @@ const Help = () => {
           <span className={Styles.orange}> truly honest feedback</span>.
         </p>
         <div className={Styles.line}></div>
-        <p className={Styles.note}>
-          Created by IDEO's interaction designer{" "}
+        <div className={Styles.noteWrapper}>
+          <span className={Styles.note}>
+            Created by IDEO's interaction designer{" "}
+            <a
+              href="https://daisukeyukita.com"
+              className={Styles.link}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Dice Yukita
+            </a>
+          </span>
           <a
-            href="https://daisukeyukita.com"
-            className={Styles.link}
+            href="https://github.com/ideo/mood-checker"
             target="_blank"
             rel="noreferrer"
           >
-            Dice Yukita
+            <img src={logo} alt="github" className={Styles.github} />
           </a>
-        </p>
+        </div>
       </Col>
     </Row>
   );

@@ -37,10 +37,6 @@
   margin: 20px auto;
 }
 
-.note {
-  font-size: 12px;
-}
-
 .link {
   margin-left: 3px;
   text-decoration: underline 1px;
@@ -49,6 +45,22 @@
 
 .link:hover {
   color: #d49c6b;
+}
+
+.noteWrapper {
+  position: relative;
+}
+
+.note {
+  position: absolute;
+  left: 0;
+  font-size: 14px;
+}
+
+.github {
+  height: 25px;
+  position: absolute;
+  right: 0;
 }
 
 /**************

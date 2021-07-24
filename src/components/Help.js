@@ -42,7 +42,7 @@ const Help = () => {
             </a>
           </span>
           <a
-            href="https://github.com/ideo/mood-checker"
+            href="https://github.com/diceky/mood-checker"
             target="_blank"
             rel="noreferrer"
           >

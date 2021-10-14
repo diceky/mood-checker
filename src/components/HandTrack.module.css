@@ -24,6 +24,18 @@
   margin-top: 20px;
 }
 
+.radioWrapper {
+}
+
+.radioInput {
+  font-size: 14px;
+}
+
+.radioInput input:checked {
+  background-color: #d49c6b;
+  border-color: #d49c6b;
+}
+
 /**************
 Responsive
 **************/

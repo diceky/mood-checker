@@ -2,8 +2,11 @@ import React, { useRef, useState, useEffect } from "react";
 import Styles from "./HandTrack.module.css";
 import * as handTrack from "handtrackjs";
 import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 import { Howl } from "howler";
-import clapSound from "../sounds/highfive.mp3";
+import clapSound1 from "../sounds/normal.mp3";
+import clapSound2 from "../sounds/yeahman.mp3";
+import clapSound3 from "../sounds/yeehaw.mp3";
 
 const color = [
   "red",
@@ -30,6 +33,8 @@ const handTrackHeight = 480;
 const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
   const [isTracking, setIsTracking] = useState(false);
   const [isSoundPlaying, setIsSoundPlaying] = useState(false);
+  const [radioValue, setRadioValue] = useState(0);
+
   const cameraRef = useRef();
   const canvasRef = useRef();
   const contextRef = useRef();
@@ -49,16 +54,23 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
     fontSize: 16,
   };
 
-  const sound = new Howl({
-    src: [clapSound],
-    volume: 0.5,
-    onplay: function () {
-      setIsSoundPlaying(true);
-    },
-    onend: function () {
-      setIsSoundPlaying(false);
-    },
-  });
+  const loadHowl = (src, volume) => {
+    return new Howl({
+      src: [src],
+      volume: volume,
+      onplay: function () {
+        setIsSoundPlaying(true);
+      },
+      onend: function () {
+        setIsSoundPlaying(false);
+      },
+    });
+  };
+
+  const howl1 = loadHowl(clapSound1, 0.7);
+  const howl2 = loadHowl(clapSound2, 0.7);
+  const howl3 = loadHowl(clapSound3, 0.5);
+  const sound = [howl1, howl2, howl3];
 
   let video, canvas;
 
@@ -119,6 +131,7 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
     //on mount
     canvasRef.current.width = handTrackWidth;
     canvasRef.current.height = handTrackHeight;
+
     return () => {
       //on unmount
       stopTracking();
@@ -169,9 +182,9 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
             Math.pow(myHandPosCenterY - handPos[index].y, 2)
         );
 
-        if (distance < 30) {
+        if (distance < 40) {
           if (!isSoundPlaying) {
-            sound.play();
+            sound[radioValue].play();
           }
         }
       }
@@ -185,6 +198,38 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
         <video ref={cameraRef} className={Styles.video}></video>
         <canvas ref={canvasRef} className={Styles.canvas}></canvas>
       </div>
+      <Form>
+        <div key={`inline-radio`} className={Styles.radioWrapper}>
+          <Form.Check
+            inline
+            defaultChecked
+            label="Normal clap"
+            type="radio"
+            name="clapSound"
+            value={0}
+            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            className={Styles.radioInput}
+          />
+          <Form.Check
+            inline
+            label='"Yeah Man"'
+            type="radio"
+            name="clapSound"
+            value={1}
+            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            className={Styles.radioInput}
+          />
+          <Form.Check
+            inline
+            label='"Yee Haw!"'
+            type="radio"
+            name="clapSound"
+            value={2}
+            onChange={(e) => setRadioValue(e.currentTarget.value)}
+            className={Styles.radioInput}
+          />
+        </div>
+      </Form>
       <Button
         onClick={handleClick}
         className={Styles.button}

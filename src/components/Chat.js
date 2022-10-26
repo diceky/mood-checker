@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Styles from "./Chat.module.css";
 import Button from "react-bootstrap/Button";
+import Linkify from 'react-linkify';
 
 const Chat = ({ roomId, chats, sendMessage, socketId }) => {
   const [newMessage, setNewMessage] = useState("");
@@ -14,7 +15,7 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
   };
 
   const handleSendMessage = () => {
-    if (newMessage != "") {
+    if (newMessage !== "") {
       sendMessage("chat_message", newMessage);
       setNewMessage("");
     }
@@ -49,7 +50,13 @@ const Chat = ({ roomId, chats, sendMessage, socketId }) => {
                     : Styles.receivedMessage
                 }
               >
-                {chat.body}
+                <Linkify componentDecorator={(decoratedHref, decoratedText, key) => (
+                  <a target="blank" rel="noreferrer" href={decoratedHref} key={key}>
+                    {decoratedText}
+                  </a>
+                )}>
+                  {chat.body}
+                </Linkify>
               </li>
             ))}
         </ol>

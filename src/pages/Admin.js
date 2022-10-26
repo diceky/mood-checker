@@ -7,6 +7,7 @@ import { useParams } from "react-router-dom";
 import BarChart from "../components/BarChart";
 import HandPosition from "../components/HandPosition";
 import useSocketIo from "../useSocketIo";
+import Linkify from 'react-linkify';
 
 const Admin = () => {
   const { id } = useParams();
@@ -73,7 +74,13 @@ const Admin = () => {
                 {chats &&
                   chats.map((chat, i) => (
                     <li key={i} className={Styles.receivedMessage}>
-                      {chat.body}
+                      <Linkify componentDecorator={(decoratedHref, decoratedText, key) => (
+                        <a target="blank" rel="noreferrer" href={decoratedHref} key={key}>
+                          {decoratedText}
+                        </a>
+                      )}>
+                        {chat.body}
+                      </Linkify>
                     </li>
                   ))}
               </ol>

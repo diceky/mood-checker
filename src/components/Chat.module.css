@@ -52,6 +52,10 @@
   margin-right: auto;
 }
 
+.receivedMessage a{
+  color: rgb(82, 170, 225);
+}
+
 .inputWrapper div {
   margin-top: 20px;
 }

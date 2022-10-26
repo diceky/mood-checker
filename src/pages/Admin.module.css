@@ -61,3 +61,7 @@
   color: #f6fafb;
   margin: 10px auto;
 }
+
+.receivedMessage a{
+  color: rgb(82, 170, 225);
+}

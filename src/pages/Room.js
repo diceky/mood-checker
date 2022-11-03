@@ -6,7 +6,7 @@ import Button from "react-bootstrap/Button";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Styles from "./Room.module.css";
-import { useParams, Link, useHistory } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import MoodSlider from "../components/MoodSlider";
 import HandTrack from "../components/HandTrack";
 import Chat from "../components/Chat";

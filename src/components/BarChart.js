@@ -69,7 +69,7 @@ const BarChart = ({ messages, socketId }) => {
 
       setBarData(newData);
     }
-  }, [messages]);
+  }, [messages,barData,socketId]);
 
   return (
     <div className={Styles.wrapper}>

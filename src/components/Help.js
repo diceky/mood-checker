@@ -31,7 +31,7 @@ const Help = () => {
         <div className={Styles.line}></div>
         <div className={Styles.noteWrapper}>
           <span className={Styles.note}>
-            Created by IDEO's interaction designer{" "}
+            Made with love by{" "}
             <a
               href="https://daisukeyukita.com"
               className={Styles.link}

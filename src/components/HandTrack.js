@@ -138,7 +138,7 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
       //on unmount
       stopTracking();
     };
-  });
+  }, []);
 
   let handPos = [];
 

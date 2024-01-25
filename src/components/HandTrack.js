@@ -79,9 +79,11 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
     isTrackingRef.current = await false;
     await setIsTracking(false);
     //reset canvas
-    await canvasRef.current
+    if(canvasRef.current !== null){
+      await canvasRef.current
       .getContext("2d")
       .clearRect(0, 0, handTrackWidth, handTrackHeight);
+    }
   };
 
   const handleClick = async () => {
@@ -136,7 +138,7 @@ const HandTrack = ({ roomId, messages, sendMessage, socketId }) => {
       //on unmount
       stopTracking();
     };
-  }, []);
+  });
 
   let handPos = [];
 
